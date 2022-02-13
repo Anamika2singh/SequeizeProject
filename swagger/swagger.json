@@ -1,0 +1,296 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Swagger Doc For Jigar Daing App ",
+    "version": "1.0.0",
+    "title": "Swagger Jigar Dating App Api"
+  },
+  "tags": [
+    {
+      "name": "List Of API",
+      "description": "",
+      "externalDocs": {}
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Choose Mobile Number Or Instagram Id For Authentication",
+        "description": "",
+        "operationId": "signup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {}
+      }
+    },
+    "/upload-photos": {
+      "post": {
+        "tags": [
+          "Upload Photos"
+        ],
+        "summary": "Upload Photos",
+        "description": "",
+        "operationId": "photos",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadPhotos"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadPhotos"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {},
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/basic-info": {
+      "post": {
+        "tags": [
+          "Basic Info and Bio"
+        ],
+        "summary": "Create A Basic Profile",
+        "description": "",
+        "operationId": "BasicInfo",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicInfo"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {},
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/get-photos": {
+      "get": {
+        "tags": [
+          "Get All Photos"
+        ],
+        "summary": "Get All Photos ",
+        "description": "",
+        "operationId": "GetPhotos",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {},
+        "responses": {},
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/get-basic-info": {
+      "get": {
+        "tags": [
+          "Get Basic Info"
+        ],
+        "summary": "Get GetBasicInfo ",
+        "description": "",
+        "operationId": "GetBasicInfo",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {},
+        "responses": {},
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://52.200.199.206"
+    },
+    {
+      "url": "http://localhost:3001"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Register": {
+        "type": "object",
+        "required": [
+          "mobile_number",
+          "instagram_id",
+          "signup_type",
+          "plateform",
+          "device_token"
+        ],
+        "properties": {
+          "mobile_number": {
+            "type": "number",
+            "example": "9888828812"
+          },
+          "instagram_id": {
+            "type": "string",
+            "example": "edas31231"
+          },
+          "signup_type": {
+            "type": "string",
+            "example": "0 for mobile 1 for instagram "
+          },
+          "plateform": {
+            "type": "string",
+            "example": "ios"
+          },
+          "device_token": {
+            "type": "string",
+            "example": "abcdefghijklmnopqrst"
+          }
+        }
+      },
+      "UploadPhotos": {
+        "type": "object",
+        "properties": {
+          "photos": {
+            "type": "file",
+            "src": "/C:/Users/graphics/Downloads/1614604600195image.jpeg"
+          }
+        }
+      },
+      "BasicInfo": {
+        "type": "object",
+        "properties": {
+          "gender": {
+            "type": "string",
+            "example": "male"
+          },
+          "origin_location": {
+            "type": "string",
+            "example": "india"
+          },
+          "current_location": {
+            "type": "string",
+            "example": "uk"
+          },
+          "height": {
+            "type": "string",
+            "example": "6'2"
+          },
+          "education": {
+            "type": "string",
+            "example": "MTech"
+          },
+          "drinking_status": {
+            "type": "string",
+            "example": "never"
+          },
+          "smoking_status": {
+            "type": "string",
+            "example": "never"
+          },
+          "latitude": {
+            "type": "double",
+            "example": 38.987
+          },
+          "longitude": {
+            "type": "double",
+            "example": 75.987
+          },
+          "religion": {
+            "type": "string",
+            "example": "Judaism"
+          },
+          "dates_purpose": {
+            "type": "string",
+            "example": "relationship"
+          },
+          "bio": {
+            "type": "string",
+            "example": "I am software Developer"
+          }
+        }
+      }
+    }
+  }
+}
